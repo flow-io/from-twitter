@@ -2,7 +2,7 @@ from-twitter
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Provides a stream interface for the Twitter stream API.
+> Provides a stream interface for the Twitter [stream API](https://dev.twitter.com/streaming/public).
 
 
 ## Installation
@@ -22,7 +22,7 @@ var stream = require( 'flow-from-twitter' );
 
 #### stream( [options] )
 
-What does this stream do?
+...TODO.
 
 ``` javascript
 
@@ -71,29 +71,13 @@ var stream = require( 'flow-from-twitter' ).objectMode;
 ## Examples
 
 ``` javascript
-var toString = require( 'flow-tostring' ),
-	append = require( 'flow-append' ).objectMode,
-	fromArray = require( 'flow-from-array' ),
-	flowStream = require( 'flow-from-twitter' );
-
-// Create some data...
-var data = new Array( 1000 );
-for ( var i = 0; i < data.length; i++ ) {
-	data[ i ] = Math.random();
-}
+var createStream = require( 'flow-from-twitter' );
 
 // Create a readable stream:
-var readableStream = fromArray( data );
+var readableStream = createStream();
 
-// Create a new flow stream:
-var stream = flowStream();
-
-// Pipe the data:
-readableStream
-	.pipe( stream )
-	.pipe( toString() )
-	.pipe( append( '\n' ) )
-	.pipe( process.stdout );
+// Pipe the data...
+readableStream.pipe( process.stdout );
 ```
 
 To run the example code from the top-level application directory,
